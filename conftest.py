@@ -2,9 +2,6 @@ from fixture.application import Application
 import pytest
 import json
 import os.path
-import importlib
-import jsonpickle
-from fixture.db import DbFixture
 
 
 #Для быстрого запуска - в рамках одной сессии.
