@@ -15,15 +15,14 @@ class SessionHelper:
         wd.find_element_by_name("password").click()
         wd.find_element_by_name("password").clear()
         wd.find_element_by_name("password").send_keys(password)
-        wd.find_element_by_xpath(
-            "(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]").click()
+        wd.find_element_by_css_selector('input[type="submit"]').click()
 
     def logout(self):
         wd = self.app.wd
         # logout
         wd.find_element_by_link_text("Logout").click()
         #bugfix for selenium
-        wd.find_element_by_name("user")
+        wd.find_element_by_name("username")
 
     def is_logged_in(self):
         wd = self.app.wd
