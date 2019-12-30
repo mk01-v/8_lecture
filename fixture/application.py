@@ -1,7 +1,5 @@
 from selenium import webdriver
 from fixture.session import SessionHelper
-from fixture.group import GroupHelper
-from fixture.kontakt import KontaktHelper
 
 
 class Application:
@@ -21,8 +19,6 @@ class Application:
         #для динамических элменетов, если данные присутствуют на странице сразу - можно убрать.
         self.wd.implicitly_wait(7)
         self.session = SessionHelper(self)
-        self.group = GroupHelper(self)
-        self.kontakt = KontaktHelper(self)
         self.base_Url = base_Url
 
     #Проверка текущей страницы.
