@@ -71,10 +71,11 @@ def install_server_configuration(host, username, password):
 def restore_install_server_configuration(host, username, password):
     with ftputil.FTPHost(host, username, password) as remote:
         if remote.path.isfile("config_inc.php.bak"):
-            if remote.path.isfile("config_inc.php.bak"):
+            if remote.path.isfile("config_inc.php"):
                 remote.remove("config_inc.php")
             remote.rename("config_inc.php.bak", "config_inc.php")
 
+#
 @pytest.fixture(scope="session")
 def config(request):
     return load_config(request.config.getoption("--target"))

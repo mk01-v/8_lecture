@@ -8,3 +8,4 @@ $g_use_captcha = off;
 $g_phpMailer_method = PHPMAILER_METHOD_SMTP;
 $g_smtp_port = '25';
 $g_smtp_host = 'localhost';
+$g_use_captcha = off;
