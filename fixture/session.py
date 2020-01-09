@@ -22,7 +22,7 @@ class SessionHelper:
         # logout
         wd.find_element_by_link_text("Logout").click()
         #bugfix for selenium
-        wd.find_element_by_name("username")
+        #wd.find_element_by_name("username")
 
     def is_logged_in(self):
         wd = self.app.wd
