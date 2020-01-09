@@ -3,7 +3,7 @@ from telnetlib import Telnet
 
 class JamesHelper:
 
-    def __init__(self):
+    def __init__(self, app):
         self.app = app
 
     def ensure_user_exists(self, username, password):
@@ -11,9 +11,9 @@ class JamesHelper:
         session = JamesHelper.Session(
             james_config['host'], james_config['port'], james_config['username'], james_config['password'])
         if session.is_users_registered(username):
-            session.reset_password(username,password)
+            session.reset_password(username, password)
         else:
-            session.create_user(username,password)
+            session.create_user(username, password)
         session.quit()
 
 
