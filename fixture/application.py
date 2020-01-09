@@ -1,9 +1,10 @@
 from selenium import webdriver
 from fixture.session import SessionHelper
+from fixture.james import JamesHelper
 
 
 class Application:
-    def __init__(self, browser, base_Url):
+    def __init__(self, browser, config):
         if browser == "Firefox":
             self.wd = webdriver.Firefox()
         elif browser == "Chrome":
@@ -19,7 +20,9 @@ class Application:
         #для динамических элменетов, если данные присутствуют на странице сразу - можно убрать.
         self.wd.implicitly_wait(7)
         self.session = SessionHelper(self)
-        self.base_Url = base_Url
+        self.james = JamesHelper(self)
+        self.config = config
+        self.base_Url = config['web']['baseUrl']
 
     #Проверка текущей страницы.
     def is_valid(self):
