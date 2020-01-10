@@ -3,9 +3,9 @@ from sys import maxsize
 
 class Project:
 
-    def __init__(self, name=None, discription=None, id=None):
+    def __init__(self, name=None, description=None, id=None):
         self.name = name
-        self.discription = discription
+        self.description = description
         self.id = id
 
     #вывод содержимое объектов, а не адресов памяти. Строковое представление в консоли.
