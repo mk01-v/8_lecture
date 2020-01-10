@@ -4,6 +4,7 @@ from fixture.james import JamesHelper
 from fixture.signup import SignupHelper
 from fixture.mail import MailHelper
 from fixture.soap import SoapHelper
+from fixture.project import ProjectHelper
 
 class Application:
     def __init__(self, browser, config):
@@ -27,6 +28,7 @@ class Application:
         self.mail = MailHelper(self)
         self.signup = SignupHelper(self)
         self.soap = SoapHelper(self)
+        self.project = ProjectHelper(self)
         self.base_Url = config['web']['baseUrl']
 
     #Проверка текущей страницы.
