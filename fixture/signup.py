@@ -7,7 +7,7 @@ class SignupHelper:
 
     def new_user(self, username, email, password):
         wd = self.app.wd
-        wd.get(self.app.baseUrl + "/signup_page.php")
+        wd.get(self.app.base_Url + "/signup_page.php")
         wd.find_element_by_name("username").send_keys(username)
         wd.find_element_by_name("email").send_keys(email)
         wd.find_element_by_css_selector('input[type="submit"]').click()
@@ -21,8 +21,8 @@ class SignupHelper:
         wd.find_element_by_css_selector('input[value="Update User"]').click()
 
     def extract_confirmation_url(self, text):
-        # .*$ - какое кол-во символов до конца строки.
-        return re.search("http://.*$", text).group(0)
+        # .*$ - какое кол-во символов до конца строки. Multilane - для ограничения знака доллара?
+        return re.search("http://.*$", text, re.MULTILINE).group(0)
 
 
 
