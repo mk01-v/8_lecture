@@ -2,6 +2,7 @@
 import poplib
 # для анализа (распарсить)
 import email
+import time
 
 
 class MailHelper:
@@ -25,7 +26,7 @@ class MailHelper:
                         pop.close()
                         return msg.get_payload()
             pop.close()
-            time.sleep(3)
+            time.sleep(7)
         return None
 
 
