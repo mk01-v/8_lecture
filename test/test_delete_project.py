@@ -5,6 +5,8 @@ import random
 def test_delete_project_without_soap(app):
     app.session.login("administrator", "root")
     assert app.session.is_logged_in_as("administrator")
+    if len(app.project.get_project_list()) == 0:
+        app.project.create_project(Project(name="test", description="qweqwe"))
     old_projects = app.project.get_project_list()
     project = random.choice(old_projects)
     app.project.delete_project(project.id)
@@ -18,6 +20,8 @@ def test_delete_project_with_soap(app):
     # ввод логина, пароля, нажатие кнопки вход.
     app.session.login("administrator", "root")
     assert app.session.is_logged_in_as("administrator")
+    if len(app.soap.get_project_list_soap("administrator", "root")) == 0:
+        app.project.create_project(Project(name="test", description="qweqwe"))
     old_projects = app.soap.get_project_list_soap("administrator", "root")
     project = random.choice(old_projects)
     app.project.delete_project(project.id)
