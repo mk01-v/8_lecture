@@ -25,5 +25,3 @@ def test_delete_project_with_soap(app):
     old_projects.remove(project)
     assert old_projects == new_projects
 
-
-
