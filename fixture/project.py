@@ -51,14 +51,16 @@ class ProjectHelper:
             self.app.open_home_page()
             self.project_cache = []
             self.open_project_page()
+            # выбор таблицы, если несколько [2].
             table = wd.find_elements_by_tag_name("table")[2]
+            # поиск по строкам.
             for row in table.find_elements_by_css_selector('tr.row-1, tr.row-2'):
+                # поиск по элементам.
                 cells = row.find_elements_by_tag_name("td")
                 name = cells[0].text
                 description = cells[1].text
                 href = row.find_element_by_css_selector("a").get_attribute("href")
-                #id[37:0]
-                id = href[href.rfind('=') + 1:]
+                id = href[70:]
                 self.project_cache.append(Project(name=name, description=description,
                                                   id=id))
         return list(self.project_cache)
