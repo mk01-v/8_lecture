@@ -20,13 +20,11 @@ class SoapHelper:
         client = Client("http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl")
         projects = client.service.mc_projects_get_user_accessible(username, password)
         project_list = []
-        try:
-            for project in projects:
-                name = project.name
-                description = project.description
-                id = project.id
-                project_list.append(Project(name=name, description=description, id=id))
-            return project_list
-        except WebFault:
-            return False
+        for project in projects:
+            name = project.name
+            description = project.description
+            id = project.id
+            project_list.append(Project(name=name, description=description, id=id))
+        return project_list
+
 
