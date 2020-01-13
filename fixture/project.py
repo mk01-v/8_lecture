@@ -61,6 +61,5 @@ class ProjectHelper:
                 description = cells[1].text
                 href = row.find_element_by_css_selector("a").get_attribute("href")
                 id = href[70:]
-                self.project_cache.append(Project(name=name, description=description,
-                                                  id=id))
+                self.project_cache.append(Project(name=name, description=description, id=id))
         return list(self.project_cache)
