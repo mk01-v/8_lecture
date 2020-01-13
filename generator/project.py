@@ -39,7 +39,7 @@ def random_string(prefix, maxlen):
 
 #Вводимые данные
 testdata = [Project(name="1_name", description="1_description")] + [
-    Project(name=random_string("name", 10), description=random_string("description", 20))
+    Project(name=random_string("name", 10), description=random_string("description", 10))
     for i in range(n)
 ]
 
