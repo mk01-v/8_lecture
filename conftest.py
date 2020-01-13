@@ -36,7 +36,7 @@ def app(request, config):
     browser = request.config.getoption("--browser")
     if fixture is None or not fixture.is_valid:
         fixture = Application(browser=browser, config=config)
-    #fixture.session.ensure_login(username=web_config["username"], password=web_config["password"])
+    fixture.session.ensure_login(username=config["webadmin"]["username"], password=config["webadmin"]["password"])
     return fixture
 
 # срабатывание всегда из-за autouse.
