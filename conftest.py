@@ -3,6 +3,8 @@ import pytest
 import json
 import os.path
 import ftputil
+import importlib
+import jsonpickle
 
 #Для быстрого запуска - в рамках одной сессии.
 #@pytest.fixture(scope = 'session')
@@ -80,7 +82,24 @@ def restore_install_server_configuration(host, username, password):
 def config(request):
     return load_config(request.config.getoption("--target"))
 
+#----------------------------------------------
 
+def pytest_generate_tests(metafunc):
+    for fixture in metafunc.fixturenames:
+        if fixture.startswith("data_"):
+            testdata = load_from_module(fixture[5:])
+            # 1 - куда будут подставляться параметры, 2 - какие значения подставляем, 3 - строковое представление.
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+        elif fixture.startswith("json_"):
+            testdata = load_from_json(fixture[5:])
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+
+def load_from_module(module):
+    return importlib.import_module("data.%s" % module).testdata
+
+def load_from_json(file):
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
+        return jsonpickle.decode(f.read())
 
 
 
