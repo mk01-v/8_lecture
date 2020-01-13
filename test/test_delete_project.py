@@ -1,17 +1,15 @@
 from model.project import Project
+import random
 
 
-def test_new_project(app):
+def test_delete_project(app):
     # вход в аккаунт
     # ввод логина, пароля, нажатие кнопки вход.
-    username = "administrator"
-    password = "root"
-    app.session.login(username, password)
+    app.session.login("administrator", "root")
+    assert app.session.is_logged_in_as("administrator")
 
-    # удаление проекта
-    project = Project(name="namepr1", description="namedisc1")
-    app.project.create_project(project)
+    old_projects = app.soap.get_project_list("administrator", "root")
+    project = random.choice(old_projects)
+    app.project.delete_project(project.id)
 
-    # проверка проекта создания проекта
-    # assert ****
 
