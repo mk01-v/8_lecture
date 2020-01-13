@@ -16,13 +16,17 @@ class SoapHelper:
         except WebFault:
             return False
 
-    def get_project_list(self, username, password):
+    def get_project_list_soap(self, username, password):
         client = Client("http://localhost/mantisbt-1.2.20/api/soap/mantisconnect.php?wsdl")
         projects = client.service.mc_projects_get_user_accessible(username, password)
-        list = []
-        for project in projects:
-            name = project.name
-            description = project.description
-            id = project.id
-            list.append(Project(name=name, description=description, id=id))
-        return list
+        project_list = []
+        try:
+            for project in projects:
+                name = project.name
+                description = project.description
+                id = project.id
+                project_list.append(Project(name=name, description=description, id=id))
+            return project_list
+        except WebFault:
+            return False
+
