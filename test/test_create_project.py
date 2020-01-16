@@ -3,7 +3,7 @@ from model.project import Project
 def test_new_project_without_soap(app):
 
     old_projects = app.project.get_project_list()
-    project = Project(name="name_123", description="description_123")
+    project = Project(name="name_123", status="obsolete", inherit_global="False", view_status="private", description="description_123")
     app.project.create_project(project)
     new_projects = app.project.get_project_list()
     assert len(old_projects) + 1 == len(new_projects)

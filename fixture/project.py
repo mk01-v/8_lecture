@@ -14,8 +14,9 @@ class ProjectHelper:
     def fill_project_form(self, project):
         wd = self.app.wd
         self.change_field_value_project("name", project.name)
-        self.change_field_value_status_selector(project.inherit_global)
-        self.change_field_value_view_status_selector("", project.view_status)
+        self.change_field_value_drop_list("status", project.status)
+        self.change_field_value_inherit_global(project.inherit_global)
+        self.change_field_value_drop_list("view_state", project.view_status)
         self.change_field_value_project("description", project.description)
 
     def change_field_value_project(self, field_name, text):
@@ -26,16 +27,16 @@ class ProjectHelper:
             wd.find_element_by_name(field_name).send_keys(text)
 
     # по-умолчанию True
-    def change_field_value_status_selector(self, inherit_global):
-        wd = self.app.wd
-        if inherit_global is not True:
-            wd.find_element_by_name(inherit_global).click()
-
-    def change_field_value_view_status_selector(self, field_name, text):
+    def change_field_value_drop_list(self, field_name, text):
         wd = self.app.wd
         if text is not None:
             wd.find_element_by_name(field_name).click()
             Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
+
+    def change_field_value_inherit_global(self, inherit_global):
+        wd = self.app.wd
+        if inherit_global is not True:
+            wd.find_element_by_name("inherit_global").click()
 
     def create_project(self, project):
         wd = self.app.wd

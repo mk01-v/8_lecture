@@ -50,8 +50,8 @@ def random_view_status():
     return random.choice(view_state_list)
 
 #Вводимые данные
-testdata = [Project(name="1_name", view_status=random_status(), inherit_global= random_inherit_global(), description="1_description")] + [
-    Project(name=random_string("name_", 10), view_status=random_status(), inherit_global= random_inherit_global(), description=random_string("description_", 10))
+testdata = [Project(name="1_name", status = random_status(), inherit_global= random_inherit_global(), view_status=random_view_status(), description="1_description")] + [
+    Project(name=random_string("name_", 10), status=random_status(), inherit_global=random_inherit_global(), view_status=random_view_status(), description=random_string("description_", 10))
     for i in range(n)
 ]
 

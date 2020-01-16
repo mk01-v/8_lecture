@@ -3,12 +3,14 @@ from sys import maxsize
 
 class Project:
 
-    def __init__(self, name=None, view_status=None, inherit_global=None, description=None, id=None):
+    def __init__(self, name=None, status=None, view_status=None, inherit_global=None, description=None, id=None):
         self.name = name
+        self.status = status
         self.inherit_global = inherit_global
         self.view_status = view_status
         self.description = description
         self.id = id
+
 
     #вывод содержимое объектов, а не адресов памяти. Строковое представление в консоли.
     def __repr__(self):
