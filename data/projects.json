@@ -3,30 +3,40 @@
     "py/object": "model.project.Project",
     "description": "1_description",
     "id": null,
-    "name": "1_name"
+    "inherit_global": true,
+    "name": "1_name",
+    "view_status": "development"
   },
   {
     "py/object": "model.project.Project",
-    "description": "descriptionm1V6ms",
+    "description": "description_SXk",
     "id": null,
-    "name": "namet0yd02hOS"
+    "inherit_global": true,
+    "name": "name_m",
+    "view_status": "development"
   },
   {
     "py/object": "model.project.Project",
-    "description": "descriptionMfTwjCbd",
+    "description": "description_nPTcwYkN",
     "id": null,
-    "name": "namew9zrM9WC"
+    "inherit_global": false,
+    "name": "name_K",
+    "view_status": "release"
   },
   {
     "py/object": "model.project.Project",
-    "description": "description1g",
+    "description": "description_inyf65",
     "id": null,
-    "name": "name7"
+    "inherit_global": false,
+    "name": "name_P6",
+    "view_status": "development"
   },
   {
     "py/object": "model.project.Project",
-    "description": "descriptionBm1mG",
+    "description": "description_OOtP",
     "id": null,
-    "name": "nameRyBDyIRN"
+    "inherit_global": true,
+    "name": "name_xlD",
+    "view_status": "obsolete"
   }
 ]
