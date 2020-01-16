@@ -1,4 +1,5 @@
 from model.project import Project
+from selenium.webdriver.support.ui import Select
 
 class ProjectHelper:
 
@@ -12,14 +13,29 @@ class ProjectHelper:
 
     def fill_project_form(self, project):
         wd = self.app.wd
+        self.change_field_value_project("name", project.name)
+        self.change_field_value_status_selector(project.inherit_global)
+        self.change_field_value_view_status_selector("", project.view_status)
+        self.change_field_value_project("description", project.description)
 
-        wd.find_element_by_name("name").click()
-        wd.find_element_by_name("name").clear()
-        wd.find_element_by_name("name").send_keys(project.name)
+    def change_field_value_project(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            wd.find_element_by_name(field_name).clear()
+            wd.find_element_by_name(field_name).send_keys(text)
 
-        wd.find_element_by_name("description").click()
-        wd.find_element_by_name("description").clear()
-        wd.find_element_by_name("description").send_keys(project.description)
+    # по-умолчанию True
+    def change_field_value_status_selector(self, inherit_global):
+        wd = self.app.wd
+        if inherit_global is not True:
+            wd.find_element_by_name(inherit_global).click()
+
+    def change_field_value_view_status_selector(self, field_name, text):
+        wd = self.app.wd
+        if text is not None:
+            wd.find_element_by_name(field_name).click()
+            Select(wd.find_element_by_name(field_name)).select_by_visible_text(text)
 
     def create_project(self, project):
         wd = self.app.wd
