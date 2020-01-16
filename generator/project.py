@@ -37,9 +37,21 @@ def random_string(prefix, maxlen):
     symbols = string.ascii_letters + string.digits # + " "*10
     return prefix + "".join([random.choice(symbols) for i in range(random.randrange(maxlen))])
 
+def random_status():
+    status_list = ("development", "release", "stable", "obsolete")
+    return random.choice(status_list)
+
+def random_inherit_global():
+    inherit_global_list = (True, False)
+    return random.choice(inherit_global_list)
+
+def random_view_status():
+    view_state_list = ("public", "private")
+    return random.choice(view_state_list)
+
 #Вводимые данные
-testdata = [Project(name="1_name", description="1_description")] + [
-    Project(name=random_string("name", 10), description=random_string("description", 10))
+testdata = [Project(name="1_name", view_status=random_status(), inherit_global= random_inherit_global(), description="1_description")] + [
+    Project(name=random_string("name_", 10), view_status=random_status(), inherit_global= random_inherit_global(), description=random_string("description_", 10))
     for i in range(n)
 ]
 
